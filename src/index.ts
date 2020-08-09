@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow,autoUpdater, dialog } from 'electron';
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -20,7 +20,23 @@ const createWindow = () => {
     // Open the DevTools.
     // mainWindow.webContents.openDevTools();
 };
-// require('update-electron-app')();
+require('update-electron-app')({
+    repo: 'mitchfaber/ElectronApp',
+    updateInterval: '1 hour'
+  })
+autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
+const dialogOpts = {
+    type: 'info',
+    buttons: ['Restart', 'Later'],
+    title: 'Application Update',
+    message: process.platform === 'win32' ? releaseNotes : releaseName,
+    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+}
+
+dialog.showMessageBox(dialogOpts).then((returnValue) => {
+    if (returnValue.response === 0) autoUpdater.quitAndInstall()
+})
+})
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.

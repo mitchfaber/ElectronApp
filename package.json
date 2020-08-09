@@ -1,8 +1,8 @@
 {
-  "name": "electron-testing",
-  "productName": "electron-testing",
+  "name": "gift-tracker",
+  "productName": "Gift Tracker",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "A simple app to track my wishlist.",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
@@ -24,7 +24,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "electron_testing"
+            "name": "GiftTracker"
           }
         },
         {
