@@ -23,7 +23,7 @@ const createWindow = () => {
 require('update-electron-app')({
     repo: 'mitchfaber/ElectronApp',
     updateInterval: '1 hour'
-  })
+})
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
 const dialogOpts = {
     type: 'info',
