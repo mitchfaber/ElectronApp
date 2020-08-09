@@ -12,15 +12,15 @@ const createWindow = () => {
         height: 600,
         width: 800,
     });
-    // comment this out for release, it's handy for refreshing during dev.
-        //   mainWindow.menuBarVisible = false;
+    // comment this out for release, it's handy for refreshing during dev though.
+    mainWindow.menuBarVisible = false;
     // and load the index.html of the app.
     mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
     // Open the DevTools.
-    //   mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
 };
-require('update-electron-app')()
+// require('update-electron-app')();
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
