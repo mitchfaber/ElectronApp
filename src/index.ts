@@ -22,8 +22,14 @@ const createWindow = () => {
 };
 require('update-electron-app')({
     repo: 'mitchfaber/ElectronApp',
-    updateInterval: '1 hour'
+    updateInterval: '5 Minutes'
 })
+
+autoUpdater.on('error', message => {
+    console.error('There was a problem updating the application')
+    console.error(message)
+})
+
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
 const dialogOpts = {
     type: 'info',
