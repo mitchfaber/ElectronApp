@@ -1,7 +1,7 @@
 {
   "name": "gift-tracker",
   "productName": "Gift Tracker",
-  "version": "0.1.0-dev",
+  "version": "0.0.0-dev",
   "description": "A simple app to track my wishlist.",
   "main": ".webpack/main",
   "scripts": {
@@ -15,6 +15,10 @@
   "author": {
     "name": "Mitch Faber",
     "email": "faberskits@gmail.com"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/mitchfaber/ElectronApp"
   },
   "license": "MIT",
   "config": {

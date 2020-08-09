@@ -20,10 +20,7 @@ const createWindow = () => {
     // Open the DevTools.
     // mainWindow.webContents.openDevTools();
 };
-require('update-electron-app')({
-    repo: 'mitchfaber/ElectronApp',
-    updateInterval: '5 Minutes'
-})
+require('update-electron-app')()
 
 autoUpdater.on('error', message => {
     console.error('There was a problem updating the application')
@@ -31,17 +28,17 @@ autoUpdater.on('error', message => {
 })
 
 autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
-const dialogOpts = {
-    type: 'info',
-    buttons: ['Restart', 'Later'],
-    title: 'Application Update',
-    message: process.platform === 'win32' ? releaseNotes : releaseName,
-    detail: 'A new version has been downloaded. Restart the application to apply the updates.'
-}
+    const dialogOpts = {
+        type: 'info',
+        buttons: ['Restart', 'Later'],
+        title: 'Application Update',
+        message: process.platform === 'win32' ? releaseNotes : releaseName,
+        detail: 'A new version has been downloaded. Restart the application to apply the updates.'
+    }
 
-dialog.showMessageBox(dialogOpts).then((returnValue) => {
-    if (returnValue.response === 0) autoUpdater.quitAndInstall()
-})
+    dialog.showMessageBox(dialogOpts).then((returnValue) => {
+        if (returnValue.response === 0) autoUpdater.quitAndInstall()
+    })
 })
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
